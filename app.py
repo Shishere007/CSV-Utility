@@ -2,11 +2,20 @@
 __version__ = 1.0
 __auther__ = "Shishere"
 
-import PySimpleGUI as sg
-import pandas as pd
+try:
+    import PySimpleGUI as sg
+    import pandas as pd
+except ModuleNotFoundError:
+    print("Some required external libraries are missing.")
+    print("Installing missing libraries. Please wait, ")
+    import os
+    os.system("pip install -r requirements.txt")
+    print("Missing modules installed.")
+
 from pathlib import Path
 from threading import Thread
 from typing import List
+
 
 KEY_INPUT_CSV_FILENAME = "-INPUT CSV-"
 KEY_OUTPUT_FOLDER = "-OUTPUT FOLDER-"
